@@ -32,7 +32,10 @@ class CreateAccountVC: UIViewController {
 
         AuthService.sharedInstance.registerUser(withEmail: email, andpassword: password) { (success) in
             if success {
-                print("registered")
+                AuthService.sharedInstance.loginUser(withEmail: email, andpassword: password, completion: { (success) in
+                    print("logged in", AuthService.sharedInstance.authToken)
+
+                })
             }
             else {
                 print("failure")
