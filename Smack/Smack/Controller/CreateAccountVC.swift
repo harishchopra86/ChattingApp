@@ -27,6 +27,17 @@ class CreateAccountVC: UIViewController {
     }
 
     @IBAction func createAccountBtnTapped(_ sender: Any) {
+        guard let email = emailTxt.text, emailTxt.text != "" else { return }
+        guard let password = passwordTxt.text, passwordTxt.text != "" else { return }
+
+        AuthService.sharedInstance.registerUser(withEmail: email, andpassword: password) { (success) in
+            if success {
+                print("registered")
+            }
+            else {
+                print("failure")
+            }
+        }
     }
     
     @IBAction func generateBackgrountColorBtnTapped(_ sender: Any) {
@@ -36,3 +47,18 @@ class CreateAccountVC: UIViewController {
         performSegue(withIdentifier: UNWIND_TO_CHANNEL, sender: nil)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
