@@ -85,11 +85,52 @@ class AuthService {
                     completion(false)
                     debugPrint(responseJSON.result.error as Any)
                 }
-
             })
     }
         
-    
+    func createUser(name:String, email:String, avatarName:String, avatarColor:String, completion:@escaping CompletionHandler) {
+        let lowecaseEmail = email.lowercased()
+        
+        let body:[String:Any] = [
+            "name":name,
+            "email":lowecaseEmail,
+            "avatarName":avatarName,
+            "avatarColor":avatarColor
+        ]
+        let header = [
+            "Authorization":"Bearer \(AuthService.sharedInstance.authToken)",
+            "Content-Type":"application/json; charset=utf-8",
+            ]
+        
+        Alamofire.request(URL_USER_ADD, method: .post, parameters: body, encoding: JSONEncoding.default, headers: header).responseJSON(completionHandler: { (responseJSON) in
+         
+            if responseJSON.result.error == nil {
+                guard let data = responseJSON.data else {return}
+                let json = try! JSON(data:data)
+                let id = json["_id"].stringValue
+                let name = json["name"].stringValue
+                let color = json["avatarColor"].stringValue
+                let avatarName = json["avatarName"].stringValue
+                let email = json["email"].stringValue
+
+                UserDataService.sharedInstance.setUserData(id: id, avatarColor: color, avatarName: avatarName, email: email, name: name)
+                
+                /*  if let json = responseJSON.result.value as? [String:Any] {
+                 if let email = json["user"] as? String {
+                 self.userEmail = email
+                 }
+                 if let token = json["token"] as? String {
+                 self.authToken = token
+                 }
+                 } */
+                completion(true)
+            }
+            else {
+                completion(false)
+                debugPrint(responseJSON.result.error as Any)
+            }
+        })
+    }
     
     
     

@@ -22,6 +22,7 @@
 		681D675A1FBE1A7000D79942 /* ChannelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681D67591FBE1A7000D79942 /* ChannelVC.swift */; };
 		68BA35D31FBFC00400C8DCB6 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BA35D21FBFC00400C8DCB6 /* AuthService.swift */; };
 		68BA35D51FBFC79E00C8DCB6 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BA35D41FBFC79E00C8DCB6 /* RoundedButton.swift */; };
+		68BA35D71FBFD2B700C8DCB6 /* UserDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BA35D61FBFD2B700C8DCB6 /* UserDataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		681D67591FBE1A7000D79942 /* ChannelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelVC.swift; sourceTree = "<group>"; };
 		68BA35D21FBFC00400C8DCB6 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		68BA35D41FBFC79E00C8DCB6 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		68BA35D61FBFD2B700C8DCB6 /* UserDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataService.swift; sourceTree = "<group>"; };
 		CF614B9A06A3E5BF5337B237 /* Pods-Smack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smack.release.xcconfig"; path = "Pods/Target Support Files/Pods-Smack/Pods-Smack.release.xcconfig"; sourceTree = "<group>"; };
 		F7AEF71B9E1611E396BC96E7 /* Pods-Smack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smack.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Smack/Pods-Smack.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -154,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				68BA35D21FBFC00400C8DCB6 /* AuthService.swift */,
+				68BA35D61FBFD2B700C8DCB6 /* UserDataService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				68066BA51FBF344500DC6014 /* GradientView.swift in Sources */,
 				68033BBE1FBE0F4F003E0E05 /* AppDelegate.swift in Sources */,
 				68066BAC1FBF428800DC6014 /* CreateAccountVC.swift in Sources */,
+				68BA35D71FBFD2B700C8DCB6 /* UserDataService.swift in Sources */,
 				68BA35D51FBFC79E00C8DCB6 /* RoundedButton.swift in Sources */,
 				681D67531FBE187700D79942 /* SWRevealViewController.m in Sources */,
 				68BA35D31FBFC00400C8DCB6 /* AuthService.swift in Sources */,
