@@ -19,9 +19,13 @@ class CreateAccountVC: UIViewController {
     var avatarColor = "[0.5,0.5,0.5,1]"
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
+    }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if UserDataService.sharedInstance.avatarName != "" {
+            avatarImgVw.image = UIImage(named:UserDataService.sharedInstance.avatarName)
+            avatarName = UserDataService.sharedInstance.avatarName
+        }
     }
 
     @IBAction func chooseAvataarTapped(_ sender: Any) {

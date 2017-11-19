@@ -120,6 +120,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IsV-xQ-ghD">
                                 <rect key="frame" x="125" y="593" width="44" height="32"/>
+                                <color key="backgroundColor" red="0.7017891839" green="0.20817368010000001" blue="0.10808200179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="XMh-Xv-jmp"/>
                                 </constraints>
