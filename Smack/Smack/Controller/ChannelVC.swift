@@ -18,15 +18,26 @@ class ChannelVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         super.viewDidLoad()
 
         self.revealViewController().rearViewRevealWidth = self.view.frame.size.width - 60;
+        NotificationCenter.default.addObserver(self, selector: #selector(userDataDidChange(notif:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
         
     }
 
+    @objc func userDataDidChange(notif:Notification) {
+        if AuthService.sharedInstance.isLoggedIn {
+            loginBtn.setTitle(UserDataService.sharedInstance.name, for: .normal)
+            profileImgVw.image = UIImage(named: UserDataService.sharedInstance.avatarName)
+            profileImgVw.backgroundColor = UserDataService.sharedInstance.returnAvatarColor(components: UserDataService.sharedInstance.avatarColor)
+        }
+        else {
+            loginBtn.setTitle("Login", for: .normal)
+            profileImgVw.image = UIImage(named: "menuProfileIcon")
+            profileImgVw.backgroundColor = UIColor.clear
+        }
+    }
    
     @IBAction func addChannelButtonTapped(_ sender: Any) {}
     
-    @IBAction func prepareForUnwind(segue:UIStoryboardSegue) {
-        
-    }
+    @IBAction func prepareForUnwind(segue:UIStoryboardSegue) {}
 
     @IBAction func loginButtonTapped(_ sender: Any) {
         performSegue(withIdentifier: TO_LOGIN, sender: nil)

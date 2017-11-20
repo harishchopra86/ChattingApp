@@ -119,10 +119,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IsV-xQ-ghD">
-                                <rect key="frame" x="125" y="593" width="44" height="32"/>
-                                <color key="backgroundColor" red="0.7017891839" green="0.20817368010000001" blue="0.10808200179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="105" y="593" width="250" height="32"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="XMh-Xv-jmp"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="XMh-Xv-jmp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                 <state key="normal" title="Login">
@@ -132,7 +132,7 @@
                                     <action selector="loginButtonTapped:" destination="bhf-eT-Rxx" eventType="touchUpInside" id="C9N-Z7-8MD"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuProfileIcon" translatesAutoresizingMaskIntoConstraints="NO" id="R0a-Hz-rKF">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuProfileIcon" translatesAutoresizingMaskIntoConstraints="NO" id="R0a-Hz-rKF" customClass="CircleImage" customModule="Smack" customModuleProvider="target">
                                 <rect key="frame" x="20" y="572" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="CeT-jx-9Xp"/>
@@ -186,14 +186,14 @@
                             <constraint firstItem="R0a-Hz-rKF" firstAttribute="top" secondItem="FZo-Fz-KoR" secondAttribute="bottom" constant="20" id="Qde-iL-XU2"/>
                             <constraint firstItem="FZo-Fz-KoR" firstAttribute="leading" secondItem="PFP-9F-vLA" secondAttribute="leading" id="RSe-MT-6eG"/>
                             <constraint firstItem="FZo-Fz-KoR" firstAttribute="top" secondItem="VM8-RP-nmH" secondAttribute="bottom" constant="20" id="Sid-nP-Fz2"/>
-                            <constraint firstItem="IsV-xQ-ghD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="R0a-Hz-rKF" secondAttribute="trailing" constant="8" symbolic="YES" id="W8i-ed-cLL"/>
+                            <constraint firstItem="IsV-xQ-ghD" firstAttribute="leading" secondItem="R0a-Hz-rKF" secondAttribute="trailing" constant="10" id="W8i-ed-cLL"/>
+                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="IsV-xQ-ghD" secondAttribute="trailing" constant="20" symbolic="YES" id="WKO-wd-eQc"/>
                             <constraint firstItem="PFP-9F-vLA" firstAttribute="trailing" secondItem="PeG-Gr-yNx" secondAttribute="trailing" constant="75" id="cws-Re-eE9"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="VM8-RP-nmH" secondAttribute="trailing" constant="20" symbolic="YES" id="g6R-2a-LBi"/>
                             <constraint firstItem="R0a-Hz-rKF" firstAttribute="leading" secondItem="PFP-9F-vLA" secondAttribute="leading" constant="20" id="omt-TQ-KJR"/>
                             <constraint firstItem="FZo-Fz-KoR" firstAttribute="trailing" secondItem="PFP-9F-vLA" secondAttribute="trailing" id="pAQ-xh-Qyc"/>
                             <constraint firstItem="VM8-RP-nmH" firstAttribute="top" secondItem="Tvh-xH-e97" secondAttribute="bottom" constant="20" id="qZl-CB-KdF"/>
                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Tvh-xH-e97" secondAttribute="trailing" constant="20" symbolic="YES" id="tx1-U2-RRC"/>
-                            <constraint firstAttribute="trailing" secondItem="IsV-xQ-ghD" secondAttribute="trailing" constant="206" id="ub7-t5-STq"/>
                             <constraint firstItem="PeG-Gr-yNx" firstAttribute="centerY" secondItem="VM8-RP-nmH" secondAttribute="centerY" id="zb0-cS-SOs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PFP-9F-vLA"/>
