@@ -29,7 +29,7 @@ class ProfileVC: UIViewController {
     }
     
     @objc func viewTapped() {
-        self.view.endEditing(true)
+        dismiss(animated: true, completion: nil)
     }
 
     @IBAction func CloseBtntapped(_ sender: Any) {

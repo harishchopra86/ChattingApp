@@ -21,8 +21,16 @@ class ChannelVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(userDataDidChange(notif:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        setUpUserInfo()
+    }
 
     @objc func userDataDidChange(notif:Notification) {
+        setUpUserInfo()
+    }
+   
+    func setUpUserInfo() {
         if AuthService.sharedInstance.isLoggedIn {
             loginBtn.setTitle(UserDataService.sharedInstance.name, for: .normal)
             profileImgVw.image = UIImage(named: UserDataService.sharedInstance.avatarName)
@@ -34,7 +42,7 @@ class ChannelVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             profileImgVw.backgroundColor = UIColor.clear
         }
     }
-   
+    
     @IBAction func addChannelButtonTapped(_ sender: Any) {}
     
     @IBAction func prepareForUnwind(segue:UIStoryboardSegue) {}

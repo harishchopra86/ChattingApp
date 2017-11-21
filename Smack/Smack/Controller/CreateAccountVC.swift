@@ -54,7 +54,6 @@ class CreateAccountVC: UIViewController {
                                 self.spinner.stopAnimating()
                                 self.performSegue(withIdentifier: UNWIND_TO_CHANNEL, sender: nil)
                                 NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object:nil)
-                                print("logged in", UserDataService.sharedInstance.name)
                             }
                             else {
                                 
