@@ -40,7 +40,15 @@ class ChannelVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBAction func prepareForUnwind(segue:UIStoryboardSegue) {}
 
     @IBAction func loginButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: TO_LOGIN, sender: nil)
+        
+        if AuthService.sharedInstance.isLoggedIn {
+            let profileVC = ProfileVC()
+            profileVC.modalPresentationStyle = .custom
+            present(profileVC, animated: true, completion: nil)
+        }
+        else {
+            performSegue(withIdentifier: TO_LOGIN, sender: nil)
+        }
     }
     
     

@@ -20,7 +20,7 @@ class AuthService {
             return defaults.bool(forKey: LOGGED_IN_KEY)
         }
         set {
-            defaults.set(true, forKey: LOGGED_IN_KEY)
+            defaults.set(newValue, forKey: LOGGED_IN_KEY)
         }}
     var authToken: String {
         get {
