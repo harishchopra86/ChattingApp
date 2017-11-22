@@ -61,11 +61,20 @@ class ChannelVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return MessageService.sharedInstance.channels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "ChannelCell", for:indexPath) as? ChannelCell {
+            cell.configureCell(channel: MessageService.sharedInstance.channels[indexPath.row])
+            return cell
+        }
+        return ChannelCell()
     }
+    
+    
+    
+    
     
 }

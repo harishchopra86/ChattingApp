@@ -22,9 +22,14 @@ class ChatVC: UIViewController {
             AuthService.sharedInstance.findUserByEmail(completion: { (success) in
                 if success {
                     NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+                    MessageService.sharedInstance.findAllChannels { (success) in
+                        
+                    }
+
                 }
             })
         }
+        
     }
 
     
@@ -33,20 +38,6 @@ class ChatVC: UIViewController {
         self.revealViewController().revealToggle(sender)
         
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+   
 
 }
