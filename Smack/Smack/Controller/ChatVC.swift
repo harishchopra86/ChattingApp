@@ -38,6 +38,7 @@ class ChatVC: UIViewController {
     func updateWithChannel() {
         let channelName = MessageService.sharedInstance.selectedChannel?.channelTitle ?? ""
         titleLbl.text = "#\(channelName)"
+        getMessages()
     }
     
     @objc func userDataDidChange(notif:Notification) {
@@ -56,15 +57,26 @@ class ChatVC: UIViewController {
     func onLoginGetChannelsAndMessages() {
         MessageService.sharedInstance.findAllChannels(completion: { (success) in
             if success {
-                
+                if MessageService.sharedInstance.channels.count > 0 {
+                    MessageService.sharedInstance.selectedChannel = MessageService.sharedInstance.channels[0]
+                    self.updateWithChannel()
+                }
+                else {
+                    self.titleLbl.text = "No channels yet"
+                }
             }
         })
     }
     
+    func getMessages() {
+        guard let channelID = MessageService.sharedInstance.selectedChannel?.id else {return}
+        MessageService.sharedInstance.findAllMessagesForChannel(channelId: channelID) { (success) in
+            
+        }
+    }
+    
     @IBAction func menuBtnTapped(_ sender: Any) {
-        
         self.revealViewController().revealToggle(sender)
-        
     }
    
 
