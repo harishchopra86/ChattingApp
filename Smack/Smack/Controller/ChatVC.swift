@@ -18,20 +18,37 @@ class ChatVC: UIViewController {
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         
+         NotificationCenter.default.addObserver(self, selector: #selector(userDataDidChange(notif:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
         if AuthService.sharedInstance.isLoggedIn {
             AuthService.sharedInstance.findUserByEmail(completion: { (success) in
                 if success {
                     NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
-                    MessageService.sharedInstance.findAllChannels { (success) in
-                        
+                    
                     }
-
-                }
             })
         }
-        
+    }
+    
+    @objc func userDataDidChange(notif:Notification) {
+        setUpUserInfo()
+    }
+    
+    func setUpUserInfo() {
+        if AuthService.sharedInstance.isLoggedIn {
+            onLoginGetChannelsAndMessages()
+        }
+        else {
+            titleLbl.text = "Please log in"
+        }
     }
 
+    func onLoginGetChannelsAndMessages() {
+        MessageService.sharedInstance.findAllChannels(completion: { (success) in
+            if success {
+                
+            }
+        })
+    }
     
     @IBAction func menuBtnTapped(_ sender: Any) {
         

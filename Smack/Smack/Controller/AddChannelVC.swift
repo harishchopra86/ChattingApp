@@ -31,15 +31,15 @@ class AddChannelVC: UIViewController {
     
     
     @IBAction func createChannelBtntapped(_ sender: Any) {
-        
-        guard let channelName = channelNameField.text, channelNameField.text != "" else{return}
-        guard let channelDescription = descriptionField.text, descriptionField.text != "" else {return}
-        SocketService.sharedInstance.addChannel(channelName: channelName, channelDescription: channelDescription) { (success) in
-            if success {
-                self.dismiss(animated: true, completion: nil)
+        if AuthService.sharedInstance.isLoggedIn {
+            guard let channelName = channelNameField.text, channelNameField.text != "" else{return}
+            guard let channelDescription = descriptionField.text, descriptionField.text != "" else {return}
+            SocketService.sharedInstance.addChannel(channelName: channelName, channelDescription: channelDescription) { (success) in
+                if success {
+                    self.dismiss(animated: true, completion: nil)
+                }
             }
         }
-
     }
     
     @IBAction func closeBtnAction(_ sender: Any) {
