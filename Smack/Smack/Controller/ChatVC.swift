@@ -35,7 +35,6 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
          NotificationCenter.default.addObserver(self, selector: #selector(userDataDidChange(notif:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(channelSelected(notif:)), name: NOTIF_CHANNEL_SELECTED, object: nil)
 
-        
         SocketService.sharedInstance.getChatmessage { (newMessage) in
             if newMessage.channelId == MessageService.sharedInstance.selectedChannel?.id && AuthService.sharedInstance.isLoggedIn {
                 MessageService.sharedInstance.messages.append(newMessage)
@@ -77,9 +76,13 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
         
         if AuthService.sharedInstance.isLoggedIn {
+            APP_DELEGATE.showLoadingView()
             AuthService.sharedInstance.findUserByEmail(completion: { (success) in
                 if success {
                     NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
+                }
+                else {
+                    APP_DELEGATE.hideloadingView()
                 }
             })
         }
@@ -130,6 +133,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func getMessages() {
         guard let channelID = MessageService.sharedInstance.selectedChannel?.id else {return}
         MessageService.sharedInstance.findAllMessagesForChannel(channelId: channelID) { (success) in
+            APP_DELEGATE.hideloadingView()
             if success {
                 self.chatTblVw.reloadData()
             }

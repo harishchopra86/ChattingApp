@@ -44,14 +44,14 @@ class CreateAccountVC: UIViewController {
         guard let email = emailTxt.text, emailTxt.text != "" else { return }
         guard let password = passwordTxt.text, passwordTxt.text != "" else { return }
         guard let name = usernameTxt.text, usernameTxt.text != "" else { return }
-        spinner.startAnimating()
+        APP_DELEGATE.showLoadingView()
         AuthService.sharedInstance.registerUser(withEmail: email, andpassword: password) { (success) in
             if success {
                 AuthService.sharedInstance.loginUser(withEmail: email, andpassword: password, completion: { (success) in
                     if success {
                         AuthService.sharedInstance.createUser(name: name, email: email, avatarName: self.avatarName, avatarColor: self.avatarColor, completion: { (success) in
+                            APP_DELEGATE.hideloadingView()
                             if success {
-                                self.spinner.stopAnimating()
                                 self.performSegue(withIdentifier: UNWIND_TO_CHANNEL, sender: nil)
                                 NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object:nil)
                             }
@@ -61,12 +61,12 @@ class CreateAccountVC: UIViewController {
                         })
                     }
                     else {
-                        
+                        APP_DELEGATE.hideloadingView()
                     }
                 })
             }
             else {
-                print("failure")
+                APP_DELEGATE.hideloadingView()
             }
         }
     }

@@ -25,18 +25,22 @@ class LoginVC: UIViewController {
     
         guard let email = usernameField.text, usernameField.text != "" else{return}
         guard let password = passwordField.text, passwordField.text != "" else {return}
+        APP_DELEGATE.showLoadingView()
         AuthService.sharedInstance.loginUser(withEmail: email, andpassword: password) { (success) in
             if success {
                 AuthService.sharedInstance.findUserByEmail(completion: { (success) in
+                    APP_DELEGATE.hideloadingView()
                     if success {
                         NotificationCenter.default.post(name: NOTIF_USER_DATA_DID_CHANGE, object:nil)
                         self.dismiss(animated: true, completion: nil)
                     }
                     else {
+                        
                     }
                 })
             }
             else {
+                APP_DELEGATE.hideloadingView()
             }
         }
     }

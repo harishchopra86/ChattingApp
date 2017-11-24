@@ -10,6 +10,9 @@ import Foundation
 
 typealias CompletionHandler = (_ Success: Bool) -> ()
 
+// Class Constants
+let APP_DELEGATE = UIApplication.shared.delegate as! AppDelegate
+
 //URL Constants
 let BASE_URL = "https://chattingappios.herokuapp.com/v1/"
 let URL_REGISTER = "\(BASE_URL)account/register"

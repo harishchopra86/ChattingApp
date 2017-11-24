@@ -40,6 +40,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func showLoadingView() {
+        let HUD = MBProgressHUD.showAdded(to: window!, animated: true)
+        HUD.label.text = "Loading..."
+        HUD.tintColor = smackPurplePlaceholder
+        
+    }
+    
+    func hideloadingView() {
+        MBProgressHUD.hide(for: window!, animated: true)
+    }
 
 }
 
