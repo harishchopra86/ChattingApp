@@ -60,8 +60,6 @@ class MessageService  {
                         let message = Message(message: messageBody, username: userName, channelId: channelID, userAvatar: userAvatar, userAvatarColor: userAvatarColor, id: id, timeStamp: timestamp)
                         self.messages.append(message)
                     }
-                    print(self.messages)
-                    //                    NotificationCenter.default.post(name: NOTIF_CHANNELS_LOADED, object: nil)
                     completion(true)
                 }
             }
