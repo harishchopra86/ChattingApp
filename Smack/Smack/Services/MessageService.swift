@@ -61,7 +61,7 @@ class MessageService  {
                         self.messages.append(message)
                     }
                     print(self.messages)
-//                    NotificationCenter.default.post(name: NOTIF_CHANNELS_LOADED, object: nil)
+                    //                    NotificationCenter.default.post(name: NOTIF_CHANNELS_LOADED, object: nil)
                     completion(true)
                 }
             }
@@ -69,8 +69,8 @@ class MessageService  {
                 completion(false)
                 debugPrint(response.result.error as Any)
             }
-
-    }
+            
+        }
     }
     
     func clearChannels() {

@@ -12,12 +12,16 @@ class ChatVC: UIViewController {
 
     @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var messageField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.bindToKeyboard()
+        view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
 
-        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
-        
+        let tapGestureReco = UITapGestureRecognizer(target: self, action: #selector(ChatVC.viewTapped))
+        view.addGestureRecognizer(tapGestureReco)
+
          NotificationCenter.default.addObserver(self, selector: #selector(userDataDidChange(notif:)), name: NOTIF_USER_DATA_DID_CHANGE, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(channelSelected(notif:)), name: NOTIF_CHANNEL_SELECTED, object: nil)
 
@@ -29,6 +33,11 @@ class ChatVC: UIViewController {
                     }
             })
         }
+        
+    }
+    
+    @objc func viewTapped() {
+        self.view.endEditing(true)
     }
 
     @objc func channelSelected(notif:Notification) {
@@ -79,5 +88,19 @@ class ChatVC: UIViewController {
         self.revealViewController().revealToggle(sender)
     }
    
-
+    @IBAction func sendMsgBtnTapped(_ sender: Any) {
+        if AuthService.sharedInstance.isLoggedIn {
+            guard let channelId = MessageService.sharedInstance.selectedChannel?.id else {return}
+            guard let message = messageField.text, messageField.text != "" else {return}
+            
+            SocketService.sharedInstance.addMessage(messageBody: message, userId: UserDataService.sharedInstance.id, channelId: channelId, completion: { (success) in
+                if success {
+                    self.messageField.resignFirstResponder()
+                    self.messageField.text = ""
+                }
+            })
+        }
+    
+    }
+    
 }
