@@ -49,3 +49,7 @@ let BEARER_HEADER = [
     "Authorization":"Bearer \(AuthService.sharedInstance.authToken)",
     "Content-Type":"application/json; charset=utf-8",
 ]
+
+//String Constants
+
+let DATE_FORMAT = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.SSSSSSXXXXX"
