@@ -18,6 +18,8 @@ class ChannelCell: UITableViewCell {
     func configureCell(channel:Channel) {
         let title = channel.channelTitle ?? ""
         channelNameLbl.text = "#\(title)"
+        channelNameLbl.font = UIFont(name: "HelveticeNeue-Regular", size: 17)
+        if
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
