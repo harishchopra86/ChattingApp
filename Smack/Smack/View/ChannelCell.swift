@@ -18,9 +18,12 @@ class ChannelCell: UITableViewCell {
     func configureCell(channel:Channel) {
         let title = channel.channelTitle ?? ""
         channelNameLbl.text = "#\(title)"
-        channelNameLbl.font = UIFont(name: "HelveticeNeue-Regular", size: 17)
-        if
+        channelNameLbl.font = UIFont(name: "HelveticaNeue-Regular", size: 17)
+        if MessageService.sharedInstance.unreadChannels.contains(channel.id) {
+           channelNameLbl.font = UIFont(name: "HelveticaNeue-Bold", size: 22)
+        }
     }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         if selected {
