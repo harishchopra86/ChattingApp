@@ -9,11 +9,11 @@
 import UIKit
 
 class ChannelVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
-   
-
+    //Outlets
     @IBOutlet weak var profileImgVw: UIImageView!
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var channelsTableView: UITableView!
+    //Actions
     @IBAction func prepareForUnwind(segue:UIStoryboardSegue) {}
 
     override func viewDidLoad() {
@@ -69,7 +69,6 @@ class ChannelVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
 
     @IBAction func loginButtonTapped(_ sender: Any) {
-        
         if AuthService.sharedInstance.isLoggedIn {
             let profileVC = ProfileVC()
             profileVC.modalPresentationStyle = .custom
@@ -79,7 +78,6 @@ class ChannelVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             performSegue(withIdentifier: TO_LOGIN, sender: nil)
         }
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return MessageService.sharedInstance.channels.count
@@ -107,5 +105,4 @@ class ChannelVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         NotificationCenter.default.post(name: NOTIF_CHANNEL_SELECTED, object: nil)
         self.revealViewController().revealToggle(animated: true)
     }
-    
 }
