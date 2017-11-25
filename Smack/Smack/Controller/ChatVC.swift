@@ -9,14 +9,15 @@
 import UIKit
 
 class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    //Outlets
     @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var messageField: UITextField!
     @IBOutlet weak var chatTblVw: UITableView!
     @IBOutlet weak var sendBtn: UIButton!
-    
+    //Actions
     @IBOutlet weak var typingUserLbl: UILabel!
+    //Variables
     var isTyping = false
     
     override func viewDidLoad() {
@@ -139,6 +140,7 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
+    
     @IBAction func messageFieldEditing(_ sender: Any) {
         guard let channelId = MessageService.sharedInstance.selectedChannel?.id else {return}
         if messageField.text == "" {
@@ -186,9 +188,4 @@ class ChatVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
         return MessageCell()
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-    
 }
