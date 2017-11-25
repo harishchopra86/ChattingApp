@@ -9,12 +9,12 @@
 import UIKit
 
 class LoginVC: UIViewController {
-
+    //Outlets
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
     @IBAction func closeBtnTapped(_ sender: Any) {
@@ -22,7 +22,6 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func loginBtnTapped(_ sender: Any) {
-    
         guard let email = usernameField.text, usernameField.text != "" else{return}
         guard let password = passwordField.text, passwordField.text != "" else {return}
         APP_DELEGATE.showLoadingView()
@@ -60,5 +59,4 @@ class LoginVC: UIViewController {
     @objc func viewTapped() {
         self.view.endEditing(true)
     }
-    
 }
