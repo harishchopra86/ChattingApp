@@ -9,18 +9,17 @@
 import UIKit
 
 class AvatarPickerVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-  
-    
-
+    //Outlets
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var avatarCollectionVw: UICollectionView!
+    
+    //Variables
     var avatarType = AvatarType.dark
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
-
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 28

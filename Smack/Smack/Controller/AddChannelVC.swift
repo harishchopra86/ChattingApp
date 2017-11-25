@@ -9,9 +9,10 @@
 import UIKit
 
 class AddChannelVC: UIViewController {
-
+    //Outlets
     @IBOutlet weak var descriptionField: UITextField!
     @IBOutlet weak var channelNameField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
@@ -20,7 +21,6 @@ class AddChannelVC: UIViewController {
     func setUpView() {
         descriptionField.attributedPlaceholder = NSAttributedString(string: "description", attributes: [NSAttributedStringKey.foregroundColor:smackPurplePlaceholder])
         channelNameField.attributedPlaceholder = NSAttributedString(string: "channel", attributes: [NSAttributedStringKey.foregroundColor:smackPurplePlaceholder])
-        
         let tapGestureReco = UITapGestureRecognizer(target: self, action: #selector(AddChannelVC.viewTapped))
         view.addGestureRecognizer(tapGestureReco)
     }
@@ -46,8 +46,4 @@ class AddChannelVC: UIViewController {
         dismiss(animated: true, completion: nil)
         
     }
-    
-    
-    
-
 }

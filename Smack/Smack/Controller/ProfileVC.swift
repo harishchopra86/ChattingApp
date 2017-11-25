@@ -9,10 +9,11 @@
 import UIKit
 
 class ProfileVC: UIViewController {
-
+    //Outlets
     @IBOutlet weak var profileImgVw: CircleImage!
     @IBOutlet weak var usernameLbl: UILabel!
     @IBOutlet weak var emailLbl: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
