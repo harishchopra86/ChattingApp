@@ -11,9 +11,7 @@ import UIKit
 class ChannelCell: UITableViewCell {
 
     @IBOutlet weak var channelNameLbl: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
+   
 
     func configureCell(channel:Channel) {
         let title = channel.channelTitle ?? ""

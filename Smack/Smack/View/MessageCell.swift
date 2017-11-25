@@ -14,10 +14,6 @@ class MessageCell: UITableViewCell {
     @IBOutlet weak var usernameLbl: UILabel!
     @IBOutlet weak var timestampLbl: UILabel!
     @IBOutlet weak var messageLbl: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 
     func configureCell(message:Message) {
         usernameLbl.text = message.username;
@@ -31,14 +27,13 @@ class MessageCell: UITableViewCell {
         dateFormatter.locale = locale
         dateFormatter.dateFormat = DATE_FORMAT
         dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-        let date = dateFormatter.date(from: dateString)
+        let messageDate = dateFormatter.date(from: dateString)
         
-//        let newDateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM d, h:mm a"
         dateFormatter.timeZone = TimeZone.current
-        if let finaldate = date {
-            let messagedate = dateFormatter.string(from: finaldate)
-            timestampLbl.text = messagedate
+        if let finaldate = messageDate {
+            let messageDateStr = dateFormatter.string(from: finaldate)
+            timestampLbl.text = messageDateStr
         }
         else {
             timestampLbl.text = ""
@@ -47,7 +42,6 @@ class MessageCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
     }
 
 }
