@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class AuthService {
     
-   static let sharedInstance = AuthService()
+    static let sharedInstance = AuthService()
     
     let defaults = UserDefaults.standard
     var isLoggedIn: Bool {
@@ -54,40 +54,31 @@ class AuthService {
             }
         }
     }
+    
+    func loginUser(withEmail email:String, andpassword password:String, completion:@escaping CompletionHandler) {
+        let lowecaseEmail = email.lowercased()
         
-        func loginUser(withEmail email:String, andpassword password:String, completion:@escaping CompletionHandler) {
-            let lowecaseEmail = email.lowercased()
-           
-            let body:[String:Any] = [
-                "email":lowecaseEmail,
-                "password":password
-            ]
-            Alamofire.request(URL_LOGIN, method: .post, parameters: body, encoding: JSONEncoding.default, headers: HEADER).responseJSON(completionHandler: { (responseJSON) in
-                if responseJSON.result.error == nil {
-                   
-                    guard let data = responseJSON.data else {return}
-                    let json = try! JSON(data:data)
-                    self.userEmail = json["user"].stringValue
-                    self.authToken = json["token"].stringValue
-                    
-                  /*  if let json = responseJSON.result.value as? [String:Any] {
-                        if let email = json["user"] as? String {
-                            self.userEmail = email
-                        }
-                        if let token = json["token"] as? String {
-                            self.authToken = token
-                        }
-                    } */
-                    self.isLoggedIn = true
-                    completion(true)
-                }
-                else {
-                    completion(false)
-                    debugPrint(responseJSON.result.error as Any)
-                }
-            })
+        let body:[String:Any] = [
+            "email":lowecaseEmail,
+            "password":password
+        ]
+        Alamofire.request(URL_LOGIN, method: .post, parameters: body, encoding: JSONEncoding.default, headers: HEADER).responseJSON(completionHandler: { (responseJSON) in
+            if responseJSON.result.error == nil {
+                
+                guard let data = responseJSON.data else {return}
+                let json = try! JSON(data:data)
+                self.userEmail = json["user"].stringValue
+                self.authToken = json["token"].stringValue
+                self.isLoggedIn = true
+                completion(true)
+            }
+            else {
+                completion(false)
+                debugPrint(responseJSON.result.error as Any)
+            }
+        })
     }
-        
+    
     func createUser(name:String, email:String, avatarName:String, avatarColor:String, completion:@escaping CompletionHandler) {
         let lowecaseEmail = email.lowercased()
         
@@ -99,7 +90,7 @@ class AuthService {
         ]
         
         Alamofire.request(URL_USER_ADD, method: .post, parameters: body, encoding: JSONEncoding.default, headers: BEARER_HEADER).responseJSON(completionHandler: { (responseJSON) in
-         
+            
             if responseJSON.result.error == nil {
                 guard let data = responseJSON.data else {return}
                 self.setUserInfo(data: data)
@@ -127,7 +118,7 @@ class AuthService {
             }
         })
     }
-
+    
     func setUserInfo(data:Data) {
         let json = try! JSON(data:data)
         let id = json["_id"].stringValue
@@ -145,7 +136,4 @@ class AuthService {
          }
          } */
     }
-    
-    
-    
 }
